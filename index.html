@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, My Emily ❤️</title>
+<meta name="theme-color" content="#18070c">
+<style>
+:root {
+  --bg: #100609;
+  --wine: #3b0b19;
+  --red: #7d1734;
+  --gold: #d9b477;
+  --cream: #fff0df;
+  --muted: #cdb9b7;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--cream);
+  background:
+    radial-gradient(ellipse at 15% 15%, #54102266, transparent 40%),
+    radial-gradient(ellipse at 85% 45%, #6e172522, transparent 38%),
+    var(--bg);
+  font-family: Georgia, "Times New Roman", serif;
+}
+button { font: inherit; }
+a { color: inherit; }
+.hero {
+  min-height: 100svh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #19070d, #350b19 55%, #100609);
+}
+.hero::before, .hero::after {
+  content: "✦";
+  position: absolute;
+  color: #d9b47740;
+  font-size: 100px;
+  animation: glow 4s ease-in-out infinite alternate;
+}
+.hero::before { top: 12%; left: 10%; }
+.hero::after { bottom: 12%; right: 10%; animation-delay: 2s; }
+.hero-content { position: relative; z-index: 2; max-width: 780px; }
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font: 11px Arial, sans-serif;
+}
+h1 {
+  font-size: clamp(44px, 9vw, 88px);
+  line-height: 1.08;
+  font-weight: normal;
+  margin: 22px 0;
+}
+h1 span { color: var(--gold); font-style: italic; }
+.subtitle {
+  color: var(--muted);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.9;
+  font-size: 16px;
+}
+.btn {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  background: var(--gold);
+  color: #1a080d;
+  padding: 15px 23px;
+  margin: 25px 6px 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: .25s;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px #d9b47725; }
+.btn.outline { background: transparent; color: var(--gold); }
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  font-size: 34px;
+  opacity: .8;
+  animation: floatUp 12s linear infinite;
+  pointer-events: none;
+}
+@keyframes floatUp {
+  from { transform: translateY(0) rotate(-8deg); }
+  to { transform: translateY(-120vh) rotate(12deg); }
+}
+@keyframes glow { from { opacity: .25; } to { opacity: .8; } }
+section { padding: 85px 20px; }
+.container { max-width: 1000px; margin: auto; }
+.section-heading { text-align: center; margin-bottom: 35px; }
+.section-heading h2 { font-size: clamp(30px, 5vw, 46px); font-weight: normal; margin: 12px 0; }
+.section-heading p { color: var(--muted); line-height: 1.8; }
+.gold { color: var(--gold); }
+.intro-card {
+  border: 1px solid #d9b47738;
+  background: linear-gradient(135deg, #39101c99, #16080d);
+  padding: clamp(25px, 6vw, 55px);
+  text-align: center;
+  line-height: 2;
+}
+.intro-card p { max-width: 690px; margin: auto; color: var(--muted); }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.photo-card {
+  border: 1px solid #d9b47745;
+  background: #200b12;
+  padding: 9px;
+}
+.photo-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  background: #35101d;
+}
+.photo-card figcaption {
+  padding: 13px 5px 8px;
+  text-align: center;
+  color: var(--gold);
+  font-size: 14px;
+}
+.placeholder {
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  color: var(--muted);
+  font: 13px/1.8 Arial, sans-serif;
+  background: linear-gradient(145deg, #451122, #1a090f);
+}
+.slideshow {
+  max-width: 650px;
+  margin: auto;
+  border: 1px solid #d9b47755;
+  background: #1c0910;
+  padding: 12px;
+}
+.slide-frame {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2c0c17;
+}
+.slide-frame img {
+  display: none;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+.slide-frame img.active { display: block; }
+.slide-placeholder {
+  padding: 35px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.8;
+}
+.slide-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0 0;
+}
+.slide-controls button {
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  padding: 10px 15px;
+  cursor: pointer;
+}
+#slideCount { color: var(--muted); font: 12px Arial, sans-serif; }
+.promise {
+  text-align: center;
+  background: linear-gradient(130deg, #380c1b, #17080d);
+  border-top: 1px solid #d9b47730;
+  border-bottom: 1px solid #d9b47730;
+}
+.promise blockquote {
+  max-width: 700px;
+  margin: 25px auto;
+  font-size: clamp(22px, 4vw, 34px);
+  line-height: 1.6;
+  font-style: italic;
+}
+.surprise-message {
+  display: none;
+  max-width: 620px;
+  margin: 25px auto 0;
+  padding: 25px;
+  border: 1px solid #d9b47766;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.surprise-message.show { display: block; animation: glow .6s ease; }
+footer {
+  padding: 35px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+}
+@media (max-width: 650px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .photo-card { padding: 6px; }
+  .photo-card img, .placeholder { height: 190px; }
+  section { padding: 65px 16px; }
+  .hero::before { left: 4%; font-size: 65px; }
+  .hero::after { right: 4%; font-size: 65px; }
+}
+@media (max-width: 380px) {
+  .gallery { grid-template-columns: 1fr; }
+  .photo-card img, .placeholder { height: 260px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="home">
+  <div id="balloons" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="eyebrow">A little world made just for you</p>
+    <h1>Happy Birthday,<br><span>My Emily</span> ❤️</h1>
+    <p class="subtitle">
+      Today is about you, your smile, your dreams, and all the beautiful
+      little things that make you special.
+    </p>
+    <a class="btn" href="#surprise">Open Your Surprise ✨</a>
+    <a class="btn outline" href="#memories">Our Memories ♡</a>
+  </div>
+</header>
+
+<main>
+  <section id="surprise">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Made with love</p>
+        <h2>A Little Birthday <span class="gold">Surprise</span></h2>
+      </div>
+      <div class="intro-card">
+        <p>
+          Some people make ordinary days feel a little more meaningful.
+          This little website is my way of celebrating you and creating
+          something personal for your special day.
+        </p>
+        <p style="margin-top:18px">
+          I hope this new year of your life brings you peace, happiness,
+          beautiful memories, and reasons to smile. 🎂
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="memories">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Little moments, lasting memories</p>
+        <h2>Our <span class="gold">Memories</span> 📸</h2>
+        <p>Our favourite pictures, collected in one little place.</p>
+      </div>
+
+      <!-- Replace each placeholder with your uploaded photo filename later. -->
+      <div class="gallery" id="gallery">
+        <figure class="photo-card">
+          <div class="placeholder">Your first photo will appear here ❤️</div>
+          <figcaption>A moment to remember</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="placeholder">Add another favourite picture ✨</div>
+          <figcaption>A little piece of happiness</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="placeholder">One more memory, just for us 🌹</div>
+          <figcaption>Something special</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="placeholder">Your fourth photo goes here 💕</div>
+          <figcaption>A day worth remembering</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="placeholder">A picture that makes you smile 🌙</div>
+          <figcaption>One of our moments</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="placeholder">Add your favourite photo here 💖</div>
+          <figcaption>Forever a sweet memory</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="slideshow">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">One picture at a time</p>
+        <h2>Moments in <span class="gold">Frames</span></h2>
+        <p>Your pictures will appear here as a slideshow once we add them.</p>
+      </div>
+      <div class="slideshow">
+        <div class="slide-frame" id="slideFrame">
+          <div class="slide-placeholder" id="slidePlaceholder">
+            📷<br><br>Your personal photo slideshow will appear here.<br>
+            We'll add your real pictures next.
+          </div>
+        </div>
+        <div class="slide-controls">
+          <button type="button" id="prevSlide">← Previous</button>
+          <span id="slideCount">No photos yet</span>
+          <button type="button" id="nextSlide">Next →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promise" id="birthday-wish">
+    <div class="container">
+      <p class="eyebrow">A wish for your new year</p>
+      <blockquote>
+        “May your heart find peace, your dreams find their way,
+        and your days hold more happiness than you imagined.”
+      </blockquote>
+      <p class="gold">Happy Birthday, Umaima ❤️</p>
+      <button class="btn" type="button" id="wishButton">One More Surprise 💌</button>
+      <div class="surprise-message" id="surpriseMessage">
+        I made this little corner of the internet especially for your
+        birthday. I hope it brings a smile to your face and reminds you
+        that you deserve kindness, happiness, and beautiful things.
+        <br><br>
+        Enjoy your special day. 🌹
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Made especially for Umaima, with care and love. ❤️
+  <br>One special day. A little world of memories.
+</footer>
+
+<script>
+/* Birthday balloons appear only in the opening section. */
+(function () {
+  const holder = document.getElementById("balloons");
+  const symbols = ["🎈", "❤️", "✨", "🎈", "💕"];
+  for (let i = 0; i < 16; i++) {
+    const balloon = document.createElement("span");
+    balloon.className = "balloon";
+    balloon.textContent = symbols[i % symbols.length];
+    balloon.style.left = (Math.random() * 94) + "%";
+    balloon.style.animationDelay = (Math.random() * 12) + "s";
+    balloon.style.animationDuration = (10 + Math.random() * 9) + "s";
+    balloon.style.fontSize = (22 + Math.random() * 20) + "px";
+    holder.appendChild(balloon);
+  }
+})();
+
+/* The slideshow becomes active when real photos are added. */
+const slides = Array.from(document.querySelectorAll(".slide-photo"));
+let currentSlide = 0;
+
+function showSlide(index) {
+  if (!slides.length) return;
+  currentSlide = (index + slides.length) % slides.length;
+  slides.forEach((img, i) => img.classList.toggle("active", i === currentSlide));
+  document.getElementById("slidePlaceholder").style.display = "none";
+  document.getElementById("slideCount").textContent =
+    (currentSlide + 1) + " / " + slides.length;
+}
+
+document.getElementById("prevSlide").addEventListener("click", () => {
+  showSlide(currentSlide - 1);
+});
+document.getElementById("nextSlide").addEventListener("click", () => {
+  showSlide(currentSlide + 1);
+});
+
+document.getElementById("wishButton").addEventListener("click", () => {
+  document.getElementById("surpriseMessage").classList.toggle("show");
+});
+</script>
+</body>
+</html>
