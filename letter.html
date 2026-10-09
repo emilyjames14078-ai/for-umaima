@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#18070c">
+<title>To Umaima, My Emily ❤️</title>
+
+<style>
+:root {
+  --bg: #100609;
+  --wine: #3b0b19;
+  --red: #7d1734;
+  --gold: #e2bf83;
+  --paper: #fff5e8;
+  --ink: #492b2c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px 14px 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--paper);
+  background:
+    radial-gradient(ellipse at top, #501525 0%, transparent 55%),
+    linear-gradient(145deg, #100609, #240811 55%, #080406);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 680px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: clamp(31px, 8vw, 49px);
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: #e6cbd0;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0 auto 32px;
+  max-width: 470px;
+}
+
+.envelope-area {
+  perspective: 1000px;
+  margin: 0 auto;
+  width: min(100%, 440px);
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 255px;
+  border: 1px solid rgba(226,191,131,.55);
+  border-radius: 5px;
+  background: linear-gradient(140deg, #5b172b, #2a0915);
+  box-shadow: 0 20px 60px #0008, 0 0 35px #b24b6420;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform .35s ease;
+}
+
+.envelope:hover { transform: translateY(-4px); }
+
+.envelope::before,
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.envelope::before {
+  background: linear-gradient(145deg, transparent 49.5%, #8e3a50 50%, transparent 50.6%);
+}
+
+.envelope::after {
+  background: linear-gradient(215deg, transparent 49.5%, #702239 50%, transparent 50.6%);
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 145px;
+  background: linear-gradient(160deg, #8b2945, #4c1025);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform .7s ease, z-index .1s;
+  z-index: 3;
+}
+
+.seal {
+  position: absolute;
+  z-index: 4;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, #f1d6a0, #b17b3e 75%);
+  color: #571327;
+  border: 2px solid #f3dba9;
+  box-shadow: 0 4px 12px #0005;
+  font-size: 25px;
+  transition: opacity .3s ease;
+}
+
+.envelope-label {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 174px;
+  left: 0;
+  color: #f4dcae;
+  letter-spacing: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope.open .seal { opacity: 0; }
+
+.hint {
+  margin: 19px 0 0;
+  font-size: 13px;
+  color: #d9b9c1;
+}
+
+.letter {
+  display: none;
+  margin: 30px auto 0;
+  padding: clamp(24px, 6vw, 48px);
+  width: 100%;
+  text-align: left;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top left, #fffdf5, transparent 55%),
+    var(--paper);
+  border: 1px solid #d5b77e;
+  border-radius: 4px;
+  box-shadow: 0 20px 65px #0007;
+  animation: appear .8s ease both;
+}
+
+.letter.show { display: block; }
+
+.letter-kicker {
+  text-align: center;
+  color: #98623f;
+  letter-spacing: 3px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.letter h2 {
+  text-align: center;
+  font-weight: normal;
+  font-size: clamp(25px, 6vw, 36px);
+  line-height: 1.3;
+  color: #671b32;
+  margin: 15px 0 30px;
+}
+
+.letter p {
+  font-size: 16px;
+  line-height: 1.95;
+  margin: 0 0 19px;
+  overflow-wrap: anywhere;
+}
+
+.signature {
+  margin-top: 30px;
+  text-align: right;
+  color: #741e39;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.signature small {
+  display: block;
+  font-size: 13px;
+  font-style: normal;
+  color: #8c6c62;
+}
+
+button {
+  margin-top: 24px;
+  padding: 12px 23px;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid #b78a59;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffffff0c;
+}
+
+.footer {
+  margin-top: 32px;
+  color: #ad8790;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .envelope { height: 225px; }
+  .flap { height: 125px; }
+  .seal { top: 86px; }
+  .envelope-label { top: 158px; font-size: 10px; }
+  .letter p { font-size: 15px; }
+}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+  <div class="eyebrow">A little something from my heart</div>
+  <h1>To Umaima, My Emily ❤️</h1>
+  <p class="subtitle">
+    Some feelings are easier to write than to say.
+    I saved these words here just for you.
+  </p>
+
+  <div class="envelope-area">
+    <div class="envelope" id="envelope" role="button"
+         tabindex="0" aria-label="Open the birthday letter">
+      <div class="flap"></div>
+      <div class="seal">♥</div>
+      <div class="envelope-label">For Umaima, with love</div>
+    </div>
+  </div>
+
+  <p class="hint" id="hint">Tap the envelope to open your letter ✨</p>
+
+  <section class="letter" id="letter">
+    <div class="letter-kicker">A letter from my heart</div>
+    <h2>Happy Birthday, My Emily ❤️</h2>
+
+    <p>To Umaima, My Emily,</p>
+
+    <p>
+      First of all, happy birthday. ❤️ I pray that Allah fills your life
+      with happiness, peace, good health, and countless beautiful moments.
+      May He protect your smile, make your dreams come true, and guide you
+      toward everything that is good for you.
+    </p>
+
+    <p>
+      On your special day, I just want you to know that you are someone
+      important to me. No matter how complicated things have sometimes
+      become between us, I still genuinely wish the best for you.
+    </p>
+
+    <p>
+      We may have had misunderstandings, made mistakes, or struggled to
+      understand each other at times. But I believe that every experience
+      teaches us something. I have learned that caring for someone also
+      means being patient, listening, understanding, and respecting their
+      feelings.
+    </p>
+
+    <p>
+      I don't want this letter to put any pressure on you or make you feel
+      that you owe me anything. I simply wanted to make your birthday a
+      little more special and share a few sincere words with you.
+    </p>
+
+    <p>
+      May Allah always keep you safe, bless your family, bring peace to
+      your heart, and give you success in everything you work toward.
+      May the coming year bring you more reasons to smile than ever before.
+    </p>
+
+    <p>
+      Thank you for being a part of my story and for the moments that have
+      meant something to me. Whatever life brings, I hope you always
+      remember your worth and never stop believing in the beautiful things
+      that are still ahead of you.
+    </p>
+
+    <p>
+      Happy birthday once again, Umaima. May your day be as special as the
+      happiness you deserve. ❤️
+    </p>
+
+    <p>With sincere wishes and duas,</p>
+
+    <div class="signature">
+      Abdullah
+      <small>With care, always ❤️</small>
+    </div>
+  </section>
+
+  <button id="openBtn" type="button">Open my letter ♥</button>
+  <div class="footer">MADE WITH CARE · OCTOBER 10</div>
+</main>
+
+<script>
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+const hint = document.getElementById("hint");
+const openBtn = document.getElementById("openBtn");
+
+function openLetter() {
+  envelope.classList.add("open");
+  letter.classList.add("show");
+  hint.textContent = "A little message, written just for you ❤️";
+  openBtn.textContent = "Letter opened ♥";
+  openBtn.disabled = true;
+
+  setTimeout(() => {
+    letter.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 250);
+}
+
+envelope.addEventListener("click", openLetter);
+envelope.addEventListener("keydown", function(event) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openLetter();
+  }
+});
+openBtn.addEventListener("click", openLetter);
+</script>
+</body>
+</html>
