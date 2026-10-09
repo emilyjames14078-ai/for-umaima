@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday, My Emily ❤️</title>
 <meta name="theme-color" content="#18070c">
+
 <style>
 :root {
   --bg: #100609;
@@ -16,7 +17,7 @@
   --muted: #cdb9b7;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 20px; }
 body {
   margin: 0;
   color: var(--cream);
@@ -26,7 +27,7 @@ body {
     var(--bg);
   font-family: Georgia, "Times New Roman", serif;
 }
-button { font: inherit; }
+button, a { font: inherit; }
 a { color: inherit; }
 .hero {
   min-height: 100svh;
@@ -45,15 +46,16 @@ a { color: inherit; }
   color: #d9b47740;
   font-size: 100px;
   animation: glow 4s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 .hero::before { top: 12%; left: 10%; }
 .hero::after { bottom: 12%; right: 10%; animation-delay: 2s; }
 .hero-content { position: relative; z-index: 2; max-width: 780px; }
 .eyebrow {
   color: var(--gold);
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  font: 11px Arial, sans-serif;
+  font: 11px/1.8 Arial, sans-serif;
 }
 h1 {
   font-size: clamp(44px, 9vw, 88px);
@@ -64,7 +66,7 @@ h1 {
 h1 span { color: var(--gold); font-style: italic; }
 .subtitle {
   color: var(--muted);
-  max-width: 540px;
+  max-width: 570px;
   margin: 0 auto;
   line-height: 1.9;
   font-size: 16px;
@@ -75,13 +77,16 @@ h1 span { color: var(--gold); font-style: italic; }
   border-radius: 3px;
   background: var(--gold);
   color: #1a080d;
-  padding: 15px 23px;
-  margin: 25px 6px 0;
+  padding: 14px 21px;
+  margin: 25px 5px 0;
   cursor: pointer;
   text-decoration: none;
   transition: .25s;
 }
-.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px #d9b47725; }
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px #d9b47725;
+}
 .btn.outline { background: transparent; color: var(--gold); }
 .balloon {
   position: absolute;
@@ -95,12 +100,23 @@ h1 span { color: var(--gold); font-style: italic; }
   from { transform: translateY(0) rotate(-8deg); }
   to { transform: translateY(-120vh) rotate(12deg); }
 }
-@keyframes glow { from { opacity: .25; } to { opacity: .8; } }
+@keyframes glow {
+  from { opacity: .25; }
+  to { opacity: .8; }
+}
 section { padding: 85px 20px; }
 .container { max-width: 1000px; margin: auto; }
 .section-heading { text-align: center; margin-bottom: 35px; }
-.section-heading h2 { font-size: clamp(30px, 5vw, 46px); font-weight: normal; margin: 12px 0; }
-.section-heading p { color: var(--muted); line-height: 1.8; }
+.section-heading h2 {
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: normal;
+  line-height: 1.3;
+  margin: 12px 0;
+}
+.section-heading p {
+  color: var(--muted);
+  line-height: 1.8;
+}
 .gold { color: var(--gold); }
 .intro-card {
   border: 1px solid #d9b47738;
@@ -109,13 +125,65 @@ section { padding: 85px 20px; }
   text-align: center;
   line-height: 2;
 }
-.intro-card p { max-width: 690px; margin: auto; color: var(--muted); }
+.intro-card p { max-width: 720px; margin: 0 auto; color: var(--muted); }
+.story-section { position: relative; }
+.story-list { display: grid; gap: 22px; }
+.story-card {
+  position: relative;
+  padding: clamp(25px, 5vw, 42px);
+  border: 1px solid #d9b47735;
+  background: linear-gradient(120deg, #30101aab, #16080d);
+  line-height: 2;
+}
+.story-card .chapter {
+  color: var(--gold);
+  font: 11px Arial, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.story-card h3 {
+  font-size: clamp(23px, 4vw, 32px);
+  font-weight: normal;
+  margin: 12px 0 17px;
+}
+.story-card p {
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.story-card p:last-child { margin-bottom: 0; }
+.story-ending {
+  margin-top: 25px;
+  text-align: center;
+  color: var(--gold);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.8;
+}
+.special-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.special-card {
+  padding: 27px 22px;
+  text-align: center;
+  border: 1px solid #d9b47735;
+  background: #200b12a8;
+}
+.special-card .symbol { font-size: 27px; }
+.special-card h3 {
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: normal;
+}
+.special-card p { color: var(--muted); line-height: 1.9; font-size: 14px; }
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 .photo-card {
+  margin: 0;
   border: 1px solid #d9b47745;
   background: #200b12;
   padding: 9px;
@@ -127,12 +195,6 @@ section { padding: 85px 20px; }
   display: block;
   background: #35101d;
 }
-.photo-card figcaption {
-  padding: 13px 5px 8px;
-  text-align: center;
-  color: var(--gold);
-  font-size: 14px;
-}
 .placeholder {
   height: 260px;
   display: flex;
@@ -143,6 +205,12 @@ section { padding: 85px 20px; }
   color: var(--muted);
   font: 13px/1.8 Arial, sans-serif;
   background: linear-gradient(145deg, #451122, #1a090f);
+}
+.photo-card figcaption {
+  padding: 13px 5px 8px;
+  text-align: center;
+  color: var(--gold);
+  font-size: 14px;
 }
 .slideshow {
   max-width: 650px;
@@ -193,15 +261,15 @@ section { padding: 85px 20px; }
   border-bottom: 1px solid #d9b47730;
 }
 .promise blockquote {
-  max-width: 700px;
+  max-width: 720px;
   margin: 25px auto;
   font-size: clamp(22px, 4vw, 34px);
-  line-height: 1.6;
+  line-height: 1.7;
   font-style: italic;
 }
 .surprise-message {
   display: none;
-  max-width: 620px;
+  max-width: 650px;
   margin: 25px auto 0;
   padding: 25px;
   border: 1px solid #d9b47766;
@@ -225,11 +293,21 @@ footer {
   .hero::after { right: 4%; font-size: 65px; }
 }
 @media (max-width: 380px) {
-  .gallery { grid-template-columns: 1fr; }
+  .gallery, .special-grid { grid-template-columns: 1fr; }
   .photo-card img, .placeholder { height: 260px; }
+  .slide-controls button { padding: 9px 10px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header class="hero" id="home">
@@ -238,31 +316,190 @@ footer {
     <p class="eyebrow">A little world made just for you</p>
     <h1>Happy Birthday,<br><span>My Emily</span> ❤️</h1>
     <p class="subtitle">
-      Today is about you, your smile, your dreams, and all the beautiful
-      little things that make you special.
+      Today is not just another date on the calendar.
+      It is a chance to celebrate you, the person you are,
+      the dreams you carry, and all the little things that
+      make you wonderfully unique.
     </p>
-    <a class="btn" href="#surprise">Open Your Surprise ✨</a>
+    <a class="btn" href="#story">Read Our Story ✨</a>
     <a class="btn outline" href="#memories">Our Memories ♡</a>
   </div>
 </header>
 
 <main>
-  <section id="surprise">
+
+  <section id="welcome">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Made with love</p>
-        <h2>A Little Birthday <span class="gold">Surprise</span></h2>
+        <p class="eyebrow">A day made a little brighter</p>
+        <h2>This Little World Is <span class="gold">For You</span></h2>
       </div>
       <div class="intro-card">
         <p>
-          Some people make ordinary days feel a little more meaningful.
-          This little website is my way of celebrating you and creating
-          something personal for your special day.
+          Umaima, I wanted to make something that felt a little
+          more personal than an ordinary birthday message.
+          Something you could open and explore, with every section
+          holding a thought, a wish, or a little reminder of how
+          special this day is.
         </p>
-        <p style="margin-top:18px">
-          I hope this new year of your life brings you peace, happiness,
-          beautiful memories, and reasons to smile. 🎂
+        <p style="margin-top:20px">
+          So here it is: a small corner of the internet made
+          especially for your birthday. No grand words can capture
+          everything a person means, but sometimes the simplest
+          things can still say something beautiful.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-section" id="story">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Every feeling has a story</p>
+        <h2>The Story <span class="gold">of Us</span> ❤️</h2>
+        <p>
+          Some stories are not written in books.
+          They are written in conversations, little moments,
+          and the feelings we carry with us.
+        </p>
+      </div>
+
+      <div class="story-list">
+
+        <article class="story-card">
+          <div class="chapter">Chapter 01 · A Special Beginning</div>
+          <h3>Some People Become Important</h3>
+          <p>
+            Sometimes a person begins to matter to us in ways we
+            never planned. There is no perfect moment when we can
+            explain exactly how it happens. Slowly, their presence
+            becomes familiar, their words begin to mean something,
+            and we find ourselves appreciating the little things
+            that make them who they are.
+          </p>
+          <p>
+            That is what makes a connection meaningful. It is not
+            about having a perfect beginning or a story that looks
+            like everyone else's. It is about the feelings, the
+            understanding, and the moments that become important
+            in their own way.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="chapter">Chapter 02 · The Little Things</div>
+          <h3>It's Never Just the Big Moments</h3>
+          <p>
+            The most meaningful parts of a story are not always
+            the dramatic ones. Sometimes they live in a simple
+            conversation, a shared laugh, a kind word, or a small
+            moment that stays in our thoughts long after it ends.
+          </p>
+          <p>
+            These little things remind us that happiness does not
+            always need a special occasion. Sometimes it can be
+            found in the ordinary moments that become special
+            simply because of the person connected to them.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="chapter">Chapter 03 · Growing Together</div>
+          <h3>A Story Is More Than a Perfect Picture</h3>
+          <p>
+            No real story is made entirely of perfect days.
+            People learn, change, make mistakes, and discover
+            new things about themselves along the way. What makes
+            a story worth remembering is the chance to understand
+            one another better, communicate honestly, and grow
+            with patience and kindness.
+          </p>
+          <p>
+            The beautiful part is knowing that every new day gives
+            us another opportunity to be thoughtful, to appreciate
+            what matters, and to make better memories than before.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="chapter">Chapter 04 · Today Is Yours</div>
+          <h3>And Today, We Celebrate You</h3>
+          <p>
+            Today, the spotlight belongs to you, Umaima.
+            Your hopes, your dreams, your happiness, and all the
+            possibilities waiting in the year ahead deserve to be
+            celebrated. I hope you always give yourself permission
+            to dream big and to believe that beautiful things
+            are still waiting for you.
+          </p>
+          <p>
+            May the coming year bring you peaceful mornings,
+            genuine smiles, exciting opportunities, people who
+            value you, and countless reasons to feel proud of
+            the person you are becoming.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="story-ending">
+        “Not every beautiful story needs perfect words.
+        Sometimes it simply needs a little heart.” ❤️
+      </div>
+    </div>
+  </section>
+
+  <section id="special">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">A few things worth celebrating</p>
+        <h2>Little Things That Make You <span class="gold">Special</span></h2>
+        <p>
+          A reminder that the smallest things can hold the
+          warmest feelings.
+        </p>
+      </div>
+
+      <div class="special-grid">
+        <article class="special-card">
+          <div class="symbol">🌹</div>
+          <h3>Your Uniqueness</h3>
+          <p>
+            There is only one you. Never feel that you have to
+            become someone else to deserve happiness, kindness,
+            or appreciation.
+          </p>
+        </article>
+
+        <article class="special-card">
+          <div class="symbol">✨</div>
+          <h3>Your Dreams</h3>
+          <p>
+            May you always have the courage to follow your goals,
+            discover new possibilities, and believe in the future
+            you want to build.
+          </p>
+        </article>
+
+        <article class="special-card">
+          <div class="symbol">🕯️</div>
+          <h3>Your Little Moments</h3>
+          <p>
+            May ordinary days surprise you with unexpected joy,
+            lovely conversations, and memories that make you smile
+            whenever you remember them.
+          </p>
+        </article>
+
+        <article class="special-card">
+          <div class="symbol">💛</div>
+          <h3>Your Happiness</h3>
+          <p>
+            You deserve respect, peace, sincere care, and the
+            freedom to grow into the person you want to be.
+            Never forget to make room for your own happiness.
+          </p>
+        </article>
       </div>
     </div>
   </section>
@@ -272,10 +509,12 @@ footer {
       <div class="section-heading">
         <p class="eyebrow">Little moments, lasting memories</p>
         <h2>Our <span class="gold">Memories</span> 📸</h2>
-        <p>Our favourite pictures, collected in one little place.</p>
+        <p>
+          This gallery is waiting for your real pictures.
+          We'll add your favourite moments here next.
+        </p>
       </div>
 
-      <!-- Replace each placeholder with your uploaded photo filename later. -->
       <div class="gallery" id="gallery">
         <figure class="photo-card">
           <div class="placeholder">Your first photo will appear here ❤️</div>
@@ -310,15 +549,21 @@ footer {
       <div class="section-heading">
         <p class="eyebrow">One picture at a time</p>
         <h2>Moments in <span class="gold">Frames</span></h2>
-        <p>Your pictures will appear here as a slideshow once we add them.</p>
+        <p>
+          Your real pictures will appear here in a slideshow
+          once we add them.
+        </p>
       </div>
+
       <div class="slideshow">
         <div class="slide-frame" id="slideFrame">
           <div class="slide-placeholder" id="slidePlaceholder">
-            📷<br><br>Your personal photo slideshow will appear here.<br>
+            📷<br><br>
+            Your personal photo slideshow will appear here.<br>
             We'll add your real pictures next.
           </div>
         </div>
+
         <div class="slide-controls">
           <button type="button" id="prevSlide">← Previous</button>
           <span id="slideCount">No photos yet</span>
@@ -331,33 +576,65 @@ footer {
   <section class="promise" id="birthday-wish">
     <div class="container">
       <p class="eyebrow">A wish for your new year</p>
+      <h2 style="font-size:clamp(29px,5vw,43px);font-weight:normal">
+        Happy Birthday, <span class="gold">Umaima</span> ❤️
+      </h2>
+
       <blockquote>
         “May your heart find peace, your dreams find their way,
         and your days hold more happiness than you imagined.”
       </blockquote>
-      <p class="gold">Happy Birthday, Umaima ❤️</p>
-      <button class="btn" type="button" id="wishButton">One More Surprise 💌</button>
+
+      <p style="color:var(--muted);line-height:2;max-width:650px;margin:20px auto">
+        I hope this birthday marks the beginning of a year filled
+        with beautiful surprises, meaningful moments, new
+        achievements, and reasons to smile even on ordinary days.
+        May you always feel proud of how far you have come and
+        excited about everything still ahead.
+      </p>
+
+      <button class="btn" type="button" id="wishButton">
+        A Final Birthday Wish ✨
+      </button>
+
       <div class="surprise-message" id="surpriseMessage">
-        I made this little corner of the internet especially for your
-        birthday. I hope it brings a smile to your face and reminds you
-        that you deserve kindness, happiness, and beautiful things.
+        Happy Birthday, Umaima! ❤️
+
         <br><br>
-        Enjoy your special day. 🌹
+
+        I hope you receive the same kindness that you give,
+        the same happiness that you bring into the lives around
+        you, and the encouragement you need to follow every
+        dream that matters to you.
+
+        <br><br>
+
+        Keep smiling, keep growing, and never stop believing
+        in the beautiful possibilities ahead. May this new
+        chapter of your life be full of peace, love, success,
+        and unforgettable memories.
+
+        <br><br>
+
+        Today is your day. Enjoy every moment of it. 🌹🎂
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   Made especially for Umaima, with care and love. ❤️
-  <br>One special day. A little world of memories.
+  <br>
+  A little world of birthday wishes and memories.
 </footer>
 
 <script>
-/* Birthday balloons appear only in the opening section. */
+/* Animated decorations in the opening section. */
 (function () {
   const holder = document.getElementById("balloons");
   const symbols = ["🎈", "❤️", "✨", "🎈", "💕"];
+
   for (let i = 0; i < 16; i++) {
     const balloon = document.createElement("span");
     balloon.className = "balloon";
@@ -370,29 +647,49 @@ footer {
   }
 })();
 
-/* The slideshow becomes active when real photos are added. */
+/*
+  Slideshow:
+  It becomes active when images with class "slide-photo"
+  are added inside the slideshow frame.
+*/
 const slides = Array.from(document.querySelectorAll(".slide-photo"));
+const placeholder = document.getElementById("slidePlaceholder");
+const slideCount = document.getElementById("slideCount");
+const prevButton = document.getElementById("prevSlide");
+const nextButton = document.getElementById("nextSlide");
 let currentSlide = 0;
 
 function showSlide(index) {
   if (!slides.length) return;
+
   currentSlide = (index + slides.length) % slides.length;
-  slides.forEach((img, i) => img.classList.toggle("active", i === currentSlide));
-  document.getElementById("slidePlaceholder").style.display = "none";
-  document.getElementById("slideCount").textContent =
-    (currentSlide + 1) + " / " + slides.length;
+
+  slides.forEach((img, i) => {
+    img.classList.toggle("active", i === currentSlide);
+  });
+
+  placeholder.style.display = "none";
+  slideCount.textContent = (currentSlide + 1) + " / " + slides.length;
 }
 
-document.getElementById("prevSlide").addEventListener("click", () => {
+prevButton.addEventListener("click", () => {
   showSlide(currentSlide - 1);
 });
-document.getElementById("nextSlide").addEventListener("click", () => {
+
+nextButton.addEventListener("click", () => {
   showSlide(currentSlide + 1);
 });
 
+/* Reveal the final birthday wish. */
 document.getElementById("wishButton").addEventListener("click", () => {
-  document.getElementById("surpriseMessage").classList.toggle("show");
+  const message = document.getElementById("surpriseMessage");
+  message.classList.toggle("show");
+
+  if (message.classList.contains("show")) {
+    message.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 });
 </script>
+
 </body>
 </html>
